@@ -1,0 +1,29 @@
+{% extends "library/base.html" %}
+{% block content %}
+<h2>My Borrowed Books</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Book</th>
+        <th>Borrow Date</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Return</th>
+    </tr>
+
+    {% for item in borrows %}
+    <tr>
+        <td>{{ item.book.title }}</td>
+        <td>{{ item.borrow_date }}</td>
+        <td>{{ item.due_date }}</td>
+        <td>{{ item.status }}</td>
+        <td>
+            {% if item.status != "returned" %}
+            <a href="/return/{{ item.id }}/" class="btn btn-success btn-sm">Return</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

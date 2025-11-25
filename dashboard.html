@@ -1,0 +1,44 @@
+{% extends "library/base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="alert alert-primary">
+            <h3>{{ total_books }}</h3>
+            <p>Total Books</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="alert alert-warning">
+            <h3>{{ total_borrows }}</h3>
+            <p>Total Borrow Records</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="alert alert-danger">
+            <h3>{{ overdue_count }}</h3>
+            <p>Overdue Books</p>
+        </div>
+    </div>
+</div>
+
+<h3>Top Borrowed Books</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Book</th>
+        <th>Times Borrowed</th>
+    </tr>
+    {% for book in top_books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.times_borrowed }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/export/csv/" class="btn btn-success">Export Report (CSV)</a>
+
+{% endblock %}

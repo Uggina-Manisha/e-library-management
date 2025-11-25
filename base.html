@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ELMS - e-Library</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">ELMS</a>
+
+        <div>
+            {% if user.is_authenticated %}
+                <a href="/my-borrows/" class="btn btn-light btn-sm">My Borrows</a>
+                {% if user.is_staff %}
+                    <a href="/dashboard/" class="btn btn-warning btn-sm">Dashboard</a>
+                {% endif %}
+                <a href="/logout/" class="btn btn-danger btn-sm">Logout</a>
+            {% else %}
+                <a href="/login/" class="btn btn-success btn-sm">Login</a>
+                <a href="/signup/" class="btn btn-primary btn-sm">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
