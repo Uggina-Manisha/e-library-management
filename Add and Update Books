@@ -1,1 +1,46 @@
+@@ -0,0 +1,45 @@
+{% extends "library/base.html" %}
+{% block content %}
+<h2>Add Book</h2>
 
+<form method="post">
+    {% csrf_token %}
+    <div class="card p-4 shadow-sm">
+
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            {{ form.title }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Author</label>
+            {{ form.author }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Category</label>
+            {{ form.category }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ISBN</label>
+            {{ form.isbn }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Total Copies</label>
+            {{ form.total_copies }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Available Copies</label>
+            {{ form.available_copies }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Book</button>
+        <a href="/" class="btn btn-secondary">Cancel</a>
+
+    </div>
+</form>
+
+{% endblock %}
